@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>S-DES Simulator — Kriptografi</title>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <header>
+    <div class="header-inner">
+      <div class="header-left">
+        <span class="header-badge">S-DES</span>
+        <div>
+          <h1>Simplified DES Simulator</h1>
+          <p>Simulasi Enkripsi &amp; Dekripsi — Mata Kuliah Kriptografi</p>
+        </div>
+      </div>
+      <div class="header-right">
+        <span>8-bit plaintext · 10-bit key</span>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- INPUT PANEL -->
+    <section class="card input-card">
+      <h2 class="section-title">Input</h2>
+
+      <div class="field-group">
+        <label for="inputBits">Plaintext / Ciphertext <span class="hint">(8 bit)</span></label>
+        <input type="text" id="inputBits" maxlength="8" placeholder="contoh: 10110100" autocomplete="off"/>
+        <span class="field-note" id="inputNote"></span>
+      </div>
+
+      <div class="field-group">
+        <label for="keyBits">Kunci <span class="hint">(10 bit)</span></label>
+        <input type="text" id="keyBits" maxlength="10" placeholder="contoh: 1010000010" autocomplete="off"/>
+        <span class="field-note" id="keyNote"></span>
+      </div>
+
+      <div class="field-group">
+        <label>Mode</label>
+        <div class="mode-toggle">
+          <button class="mode-btn active" id="btnEnkripsi" onclick="setMode('enkripsi')">Enkripsi</button>
+          <button class="mode-btn" id="btnDekripsi" onclick="setMode('dekripsi')">Dekripsi</button>
+        </div>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn-submit" onclick="proses()">Proses</button>
+        <button class="btn-reset" onclick="reset()">Reset</button>
+      </div>
+    </section>
+
+    <!-- OUTPUT PANEL -->
+    <section class="card output-card" id="outputCard" style="display:none">
+      <h2 class="section-title">Hasil</h2>
+      <div class="result-display">
+        <span class="result-label" id="resultLabel">Ciphertext</span>
+        <div class="bit-row" id="resultBits"></div>
+      </div>
+
+      <div class="toggle-steps-row">
+        <button class="toggle-steps-btn" onclick="toggleSteps()">
+          <span id="toggleLabel">▶ Tampilkan Langkah Perhitungan</span>
+        </button>
+      </div>
+
+      <div id="stepsPanel" class="steps-panel" style="display:none">
+        <div id="stepsContent"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Simulasi S-DES — Kriptografi · Dibuat untuk keperluan pembelajaran</p>
+  </footer>
+
+  <script src="sdes.js"></script>
+  <script src="ui.js"></script>
+</body>
+</html>
